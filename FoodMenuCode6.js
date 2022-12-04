@@ -1,174 +1,57 @@
 const prevBtn = document.querySelector("#prev-btn");
 const nextBtn = document.querySelector("#next-btn");
 const book = document.querySelector("#book");
-const paper1 = document.querySelector(`#p1`);
-const paper2 = document.querySelector(`#p2`);
+const pageIndicator = document.querySelector("#page-indicator");
+const papers = document.getElementsByClassName("paper");
+const nextButton = document.querySelector("#next-button");
+const prevButton = document.querySelector("#prev-button");
 const myDocument = document.querySelector("#menu-container");
-const paper3 = document.querySelector(`#p3`);
-const paper4 = document.querySelector(`#p4`);
-const paper5 = document.querySelector(`#p5`);
-const paper6 = document.querySelector(`#p6`);
-const paper7 = document.querySelector(`#p7`);
-const paper8 = document.querySelector(`#p8`);
-const paper9 = document.querySelector(`#p9`);
-const paper10 = document.querySelector(`#p10`);
-const paper11 = document.querySelector(`#p11`);
-const paper12 = document.querySelector(`#p12`);
-const paper13 = document.querySelector(`#p13`);
 const zoomIn = document.querySelector("#zoom-in");
 const zoomOut = document.querySelector("#zoom-out");
 const fullScreen = document.querySelector("#full-screen");
 const controller = document.querySelector("#controller");
 const mainContainer = document.getElementsByClassName("main-container")[0];
-let currentLocation = 1;
-let numOfPapers = 13;
-let maxLocation = numOfPapers + 1;
-pageIndicator.innerText = ` ${currentLocation} / ${numOfPapers}`;
-prevBtn.addEventListener("click", goPrevPage);
-nextBtn.addEventListener("click", goNextPage);
-
-function openBook() {
-  book.style.transform = "translateX(50%)";
-}
-function closeBook(isAtBeginning) {
-  if (isAtBeginning) {
-    book.style.transform = "translateX(0%)";
-  } else {
-    book.style.transform = "translateX(100%)";
-  }
-  prevBtn.style.transform = "translateX(0px)";
-  nextBtn.style.transform = "translateX(0px)";
-}
-function goNextPage() {
-  if (currentLocation < maxLocation) {
-    switch (currentLocation) {
-      case 1:
-        openBook();
-        paper1.classList.add("flipped");
-        paper1.style.zIndex = 1;
-        break;
-      case 2:
-        paper2.classList.add("flipped");
-        paper2.style.zIndex = 2;
-        break;
-      case 3:
-        paper3.classList.add("flipped");
-        paper3.style.zIndex = 3;
-        break;
-      case 4:
-        paper4.classList.add("flipped");
-        paper4.style.zIndex = 4;
-        break;
-      case 5:
-        paper5.classList.add("flipped");
-        paper5.style.zIndex = 5;
-        break;
-      case 6:
-        paper6.classList.add("flipped");
-        paper6.style.zIndex = 6;
-        break;
-      case 7:
-        paper7.classList.add("flipped");
-        paper7.style.zIndex = 7;
-        break;
-      case 8:
-        paper8.classList.add("flipped");
-        paper8.style.zIndex = 8;
-        break;
-      case 9:
-        paper9.classList.add("flipped");
-        paper9.style.zIndex = 9;
-        break;
-      case 10:
-        paper10.classList.add("flipped");
-        paper10.style.zIndex = 10;
-        break;
-      case 11:
-        paper11.classList.add("flipped");
-        paper11.style.zIndex = 11;
-        break;
-      case 12:
-        paper12.classList.add("flipped");
-        paper12.style.zIndex = 12;
-        break;
-      case 13:
-        paper13.classList.add("flipped");
-        paper13.style.zIndex = 13;
-        closeBook();
-        break;
-      default:
-        throw new Error("unkown state");
-    }
-    currentLocation++;
-    pageIndicator.innerText = ` ${currentLocation} / ${numOfPapers}`;
-  }
-}
+const pageFlip = new St.PageFlip(book, {
+  width: 400,
+  height: 600,
+  showCover: true,
+});
+pageFlip.loadFromImages([
+  "https://uploads-ssl.webflow.com/62c2d80c5ea0ee6456ca6b3d/6366a5d4fa8aeb7181ea813b_Taftoon%20Food%20Menu%20-%20May%202022%20-%20New%20Edits%20(1)_page-0001.jpg",
+  "https://uploads-ssl.webflow.com/62c2d80c5ea0ee6456ca6b3d/6366a5d5caac0326a7f3bf84_Taftoon%20Food%20Menu%20-%20May%202022%20-%20New%20Edits%20(1)_page-0002.jpg",
+  "https://uploads-ssl.webflow.com/62c2d80c5ea0ee6456ca6b3d/6366a5d4f090ad600d7a5ea2_Taftoon%20Food%20Menu%20-%20May%202022%20-%20New%20Edits%20(1)_page-0003.jpg",
+  "https://uploads-ssl.webflow.com/62c2d80c5ea0ee6456ca6b3d/6366a5d4fa8aeb7181ea813b_Taftoon%20Food%20Menu%20-%20May%202022%20-%20New%20Edits%20(1)_page-0001.jpg",
+  "https://uploads-ssl.webflow.com/62c2d80c5ea0ee6456ca6b3d/6366a5d5caac0326a7f3bf84_Taftoon%20Food%20Menu%20-%20May%202022%20-%20New%20Edits%20(1)_page-0002.jpg",
+  "https://uploads-ssl.webflow.com/62c2d80c5ea0ee6456ca6b3d/6366a5d4f090ad600d7a5ea2_Taftoon%20Food%20Menu%20-%20May%202022%20-%20New%20Edits%20(1)_page-0003.jpg",
+  "https://uploads-ssl.webflow.com/62c2d80c5ea0ee6456ca6b3d/6366a5d4fa8aeb7181ea813b_Taftoon%20Food%20Menu%20-%20May%202022%20-%20New%20Edits%20(1)_page-0001.jpg",
+  "https://uploads-ssl.webflow.com/62c2d80c5ea0ee6456ca6b3d/6366a5d5caac0326a7f3bf84_Taftoon%20Food%20Menu%20-%20May%202022%20-%20New%20Edits%20(1)_page-0002.jpg",
+  "https://uploads-ssl.webflow.com/62c2d80c5ea0ee6456ca6b3d/6366a5d4f090ad600d7a5ea2_Taftoon%20Food%20Menu%20-%20May%202022%20-%20New%20Edits%20(1)_page-0003.jpg",
+  "https://uploads-ssl.webflow.com/62c2d80c5ea0ee6456ca6b3d/6366a5d4fa8aeb7181ea813b_Taftoon%20Food%20Menu%20-%20May%202022%20-%20New%20Edits%20(1)_page-0001.jpg",
+  "https://uploads-ssl.webflow.com/62c2d80c5ea0ee6456ca6b3d/6366a5d5caac0326a7f3bf84_Taftoon%20Food%20Menu%20-%20May%202022%20-%20New%20Edits%20(1)_page-0002.jpg",
+  "https://uploads-ssl.webflow.com/62c2d80c5ea0ee6456ca6b3d/6366a5d4f090ad600d7a5ea2_Taftoon%20Food%20Menu%20-%20May%202022%20-%20New%20Edits%20(1)_page-0003.jpg",
+]);
 function goPrevPage() {
   if (currentLocation > 1) {
-    switch (currentLocation) {
-      case 2:
-        closeBook(true);
-        paper1.classList.remove("flipped");
-        paper1.style.zIndex = 14;
-        break;
-      case 3:
-        paper2.classList.remove("flipped");
-        paper2.style.zIndex = 13;
-        break;
-      case 4:
-        paper3.classList.remove("flipped");
-        paper3.style.zIndex = 12;
-        break;
-      case 5:
-        paper4.classList.remove("flipped");
-        paper4.style.zIndex = 11;
-        break;
-      case 6:
-        paper5.classList.remove("flipped");
-        paper5.style.zIndex = 10;
-        break;
-      case 7:
-        paper6.classList.remove("flipped");
-        paper6.style.zIndex = 9;
-        break;
-      case 8:
-        paper7.classList.remove("flipped");
-        paper7.style.zIndex = 8;
-        break;
-
-      case 9:
-        paper8.classList.remove("flipped");
-        paper8.style.zIndex = 7;
-        break;
-
-      case 10:
-        paper9.classList.remove("flipped");
-        paper9.style.zIndex = 6;
-        break;
-      case 11:
-        paper10.classList.remove("flipped");
-        paper10.style.zIndex = 5;
-        break;
-      case 12:
-        paper11.classList.remove("flipped");
-        paper11.style.zIndex = 4;
-        break;
-      case 13:
-        paper12.classList.remove("flipped");
-        paper12.style.zIndex = 3;
-        break;
-      case 14:
-        paper13.classList.remove("flipped");
-        paper13.style.zIndex = 2;
-        openBook();
-        break;
-      default:
-        throw new Error("unkown state");
-    }
+    pageFlip.flipPrev();
     currentLocation--;
     pageIndicator.innerText = ` ${currentLocation} / ${numOfPapers}`;
   }
-}
+} 
+function goNextPage() {
+  if (currentLocation < numOfPapers) {
+    pageFlip.flipNext();
+    currentLocation++;
+    pageIndicator.innerText = ` ${currentLocation} / ${numOfPapers}`;
+  }
+} 
+prevBtn.addEventListener("click", goPrevPage);
+nextBtn.addEventListener("click", goNextPage);
+nextButton.addEventListener("click", goNextPage);
+prevButton.addEventListener("click", goPrevPage);
+let currentLocation = pageFlip.getCurrentPageIndex() + 1; 
+let numOfPapers = pageFlip.getPageCount();
+let maxLocation = numOfPapers + 1; 
+pageIndicator.innerText = ` ${currentLocation} / ${numOfPapers}`;
 
 let height = 90;
 let width = 70;
@@ -271,10 +154,29 @@ function FullScreenHandler() {
     isFullScreen = !isFullScreen;
   }
 }
+document.addEventListener("keydown", (event) => {
+  if (event.key === "e" && isFullScreen) {
+    document
+      .exitFullscreen()
+      .then(() => location.reload())
+      .catch((err) => console.error(err));
+  }
+});
 zoomIn.addEventListener("click", zoomInHandler);
 zoomOut.addEventListener("click", zoomOutHandler);
 fullScreen.addEventListener("click", FullScreenHandler);
-
+document.getElementById("bar-btn").addEventListener("click", () => {
+  document.getElementById("food-btn").style.backgroundColor = "transparent";
+  document.getElementById("food-btn").style.color = "black";
+  document.getElementById("bar-btn").style.backgroundColor = "black";
+  document.getElementById("bar-btn").style.color = "white";
+});
+document.getElementById("food-btn").addEventListener("click", () => {
+  document.getElementById("bar-btn").style.backgroundColor = "transparent";
+  document.getElementById("bar-btn").style.color = "black";
+  document.getElementById("food-btn").style.backgroundColor = "black";
+  document.getElementById("food-btn").style.color = "white";
+});
 const prevBtnBar = document.querySelector("#prev-btn-bar");
 const nextBtnBar = document.querySelector("#next-btn-bar");
 const bookBar = document.querySelector("#book-bar");
@@ -286,174 +188,44 @@ const zoomInBar = document.querySelector("#zoom-in-bar");
 const zoomOutBar = document.querySelector("#zoom-out-bar");
 const fullScreenBar = document.querySelector("#full-screen-bar");
 const controllerBar = document.querySelector("#controller-bar");
-const paperBar1 = document.querySelector(`#p1`);
-const paperBar2 = document.querySelector(`#p2`);
-const paperBar3 = document.querySelector(`#p3`);
-const paperBar4 = document.querySelector(`#p4`);
-const paperBar5 = document.querySelector(`#p5`);
-const paperBar6 = document.querySelector(`#p6`);
-const paperBar7 = document.querySelector(`#p7`);
-const paperBar8 = document.querySelector(`#p8`);
-const paperBar9 = document.querySelector(`#p9`);
-const paperBar10 = document.querySelector(`#p10`);
-const paperBar11 = document.querySelector(`#p11`);
-const paperBar12 = document.querySelector(`#p12`);
-const paperBar13 = document.querySelector(`#p13`);
 const mainContainerBar = document.getElementsByClassName("main-container")[1];
-let currentLocationBar = 1;
-let numOfPapersBar = 13;
-let maxLocationBar = numOfPapersBar + 1;
-pageIndicatorBar.innerText = ` ${currentLocationBar} / ${numOfPapersBar}`;
-prevBtnBar.addEventListener("click", goPrevPage);
-nextBtnBar.addEventListener("click", goNextPage);
+const pageFlipBar = new St.PageFlip(bookBar, {
+  width: 400,
+  height: 600,
+  showCover: true,
+});
+pageFlipBar.loadFromImages([
+"https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmFuZG9tfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
+"https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmFuZG9tfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+]);
 
-function openBookBar() {
-  bookBar.style.transform = "translateX(50%)";
-}
-function closeBookBar(isAtBeginning) {
-  if (isAtBeginning) {
-    bookBar.style.transform = "translateX(0%)";
-  } else {
-    bookBar.style.transform = "translateX(100%)";
-  }
-  prevBtnBar.style.transform = "translateX(0px)";
-  nextBtnBar.style.transform = "translateX(0px)";
-}
-function goNextPageBar() {
-  if (currentLocationBar < maxLocationBar) {
-    switch (currentLocationBar) {
-      case 1:
-        openBookBar();
-        paperBar1.classList.add("flipped");
-        paperBar1.style.zIndex = 1;
-        break;
-      case 2:
-        paperBar2.classList.add("flipped");
-        paperBar2.style.zIndex = 2;
-        break;
-      case 3:
-        paperBar3.classList.add("flipped");
-        paperBar3.style.zIndex = 3;
-        break;
-      case 4:
-        paperBar4.classList.add("flipped");
-        paperBar4.style.zIndex = 4;
-        break;
-      case 5:
-        paperBar5.classList.add("flipped");
-        paperBar5.style.zIndex = 5;
-        break;
-      case 6:
-        paperBar6.classList.add("flipped");
-        paperBar6.style.zIndex = 6;
-        break;
-      case 7:
-        paperBar7.classList.add("flipped");
-        paperBar7.style.zIndex = 7;
-        break;
-      case 8:
-        paperBar8.classList.add("flipped");
-        paperBar8.style.zIndex = 8;
-        break;
-      case 9:
-        paperBar9.classList.add("flipped");
-        paperBar9.style.zIndex = 9;
-        break;
-      case 10:
-        paperBar10.classList.add("flipped");
-        paperBar10.style.zIndex = 10;
-        break;
-      case 11:
-        paperBar11.classList.add("flipped");
-        paperBar11.style.zIndex = 11;
-        break;
-      case 12:
-        paperBar12.classList.add("flipped");
-        paperBar12.style.zIndex = 12;
-        break;
-      case 13:
-        paperBar13.classList.add("flipped");
-        paperBar13.style.zIndex = 13;
-        closeBookBar();
-        break;
-      default:
-        throw new Error("unkown state");
-    }
-    currentLocationBar++;
-    pageIndicatorBar.innerText = ` ${currentLocationBar} / ${numOfPapersBar}`;
-  }
-}
 function goPrevPageBar() {
   if (currentLocationBar > 1) {
-    switch (currentLocationBar) {
-      case 2:
-        closeBook(true);
-        paperBar1.classList.remove("flipped");
-        paperBar1.style.zIndex = 14;
-        break;
-      case 3:
-        paperBar2.classList.remove("flipped");
-        paperBar2.style.zIndex = 13;
-        break;
-      case 4:
-        paperBar3.classList.remove("flipped");
-        paperBar3.style.zIndex = 12;
-        break;
-      case 5:
-        paperBar4.classList.remove("flipped");
-        paperBar4.style.zIndex = 11;
-        break;
-      case 6:
-        paperBar5.classList.remove("flipped");
-        paperBar5.style.zIndex = 10;
-        break;
-      case 7:
-        paperBar6.classList.remove("flipped");
-        paperBar6.style.zIndex = 9;
-        break;
-      case 8:
-        paperBar7.classList.remove("flipped");
-        paperBar7.style.zIndex = 8;
-        break;
-
-      case 9:
-        paperBar8.classList.remove("flipped");
-        paperBar8.style.zIndex = 7;
-        break;
-
-      case 10:
-        paperBar9.classList.remove("flipped");
-        paperBar9.style.zIndex = 6;
-        break;
-      case 11:
-        paperBar10.classList.remove("flipped");
-        paperBar10.style.zIndex = 5;
-        break;
-      case 12:
-        paperBar11.classList.remove("flipped");
-        paperBar11.style.zIndex = 4;
-        break;
-      case 13:
-        paperBar12.classList.remove("flipped");
-        paperBar12.style.zIndex = 3;
-        break;
-      case 14:
-        paperBar13.classList.remove("flipped");
-        paperBar13.style.zIndex = 2;
-        openBookBar();
-        break;
-      default:
-        throw new Error("unkown state");
-    }
+    pageFlipBar.flipPrev();
     currentLocationBar--;
     pageIndicatorBar.innerText = ` ${currentLocationBar} / ${numOfPapersBar}`;
+    console.log("Pressed");
   }
+  console.log("Out of If");
 }
-
+function goNextPageBar() {
+  if (currentLocationBar < numOfPapersBar) {
+    pageFlipBar.flipNext();
+    currentLocationBar++;
+    console.log("Pressed Next");
+    
+    pageIndicatorBar.innerText = ` ${currentLocationBar} / ${numOfPapersBar}`;
+  }
+  console.log("Out of If Next");
+}
 prevBtnBar.addEventListener("click", goPrevPageBar);
 nextBtnBar.addEventListener("click", goNextPageBar);
 nextButtonBar.addEventListener("click", goNextPageBar);
 prevButtonBar.addEventListener("click", goPrevPageBar);
+let currentLocationBar = pageFlipBar.getCurrentPageIndex() + 1; //extract information for pageFlipBar like this
+let numOfPapersBar = pageFlipBar.getPageCount(); //same for here
+let maxLocationBar = numOfPapersBar + 1; //same for her
+pageIndicatorBar.innerText = ` ${currentLocationBar} / ${numOfPapersBar}`;
 
 function zoomInAutomatorBar(Scale, Width, Height, widthInc, heightInc, scaleInc) {
   bookBar.style.scale = Scale + scaleInc;
