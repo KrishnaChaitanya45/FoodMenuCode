@@ -2,15 +2,14 @@ const prevBtnBar = document.querySelector("#prev-btn-bar");
 const nextBtnBar = document.querySelector("#next-btn-bar");
 const bookBar = document.querySelector("#book-bar");
 const pageIndicatorBar = document.querySelector("#page-indicator-bar");
-const papers = document.getElementsByClassName("paper");
-const myDocument = document.querySelector("#menu-container-bar");
+const myDocumentBar = document.querySelector("#menu-container-bar");
 const nextButtonBar = document.querySelector("#next-button-bar");
 const prevButtonBar = document.querySelector("#prev-button-bar");
 const zoomInBar = document.querySelector("#zoom-in-bar");
 const zoomOutBar = document.querySelector("#zoom-out-bar");
 const fullScreenBar = document.querySelector("#full-screen-bar");
 const controllerBar = document.querySelector("#controller-bar");
-const mainContainer = document.getElementsByClassName("main-container")[1];
+const mainContainerBarBar = document.getElementsByClassName("main-container")[1];
 const pageFlipBar = new St.PageFlip(bookBar, {
   width: 400,
   height: 600,
@@ -65,14 +64,14 @@ let TabHeight = 40;
 function zoomInAutomatorBar(Scale, Width, Height, widthInc, heightInc, scaleInc) {
   book.style.scale = Scale + scaleInc;
   bookBar.style.scale = Scale + scaleInc;
-  mainContainer.style.height = Height + heightInc + "vh";
-  mainContainer.style.width = Width + widthInc + "vw";
+  mainContainerBar.style.height = Height + heightInc + "vh";
+  mainContainerBar.style.width = Width + widthInc + "vw";
 }
 function zoomOutAutomatorBar(Scale, Width, Height, widthInc, heightInc, scaleInc) {
   book.style.scale = Scale - scaleInc;
   bookBar.style.scale = Scale - scaleInc;
-  mainContainer.style.height = Height - heightInc + "vh";
-  mainContainer.style.width = Width - widthInc + "vw";
+  mainContainerBar.style.height = Height - heightInc + "vh";
+  mainContainerBar.style.width = Width - widthInc + "vw";
 }
 const mediaQueryTabMax = window.matchMedia("(max-width:1024px)");
 const mediaQueryTabMin = window.matchMedia("(min-width:500px)");
@@ -139,19 +138,19 @@ function FullScreenHandlerBar() {
       bookBar.style.height = "70vh";
       bookBar.style.width = "50vw";
     } else {
-      if (myDocument.requestFullscreen) {
-        myDocument.requestFullscreen();
-        mainContainer.style.width = "98vw";
-        mainContainer.style.height = "98vh";
+      if (myDocumentBar.requestFullscreen) {
+        myDocumentBar.requestFullscreen();
+        mainContainerBar.style.width = "98vw";
+        mainContainerBar.style.height = "98vh";
         bookBar.style.height = "100%";
         bookBar.style.width = "100%";
         controllerBar.style.display = "none";
-      } else if (myDocument.msRequestFullscreen) {
-        myDocument.msRequestFullscreen();
-      } else if (myDocument.mozRequestFullScreen) {
-        myDocument.mozRequestFullScreen();
-      } else if (myDocument.webkitRequestFullscreen) {
-        myDocument.webkitRequestFullscreen();
+      } else if (myDocumentBar.msRequestFullscreen) {
+        myDocumentBar.msRequestFullscreen();
+      } else if (myDocumentBar.mozRequestFullScreen) {
+        myDocumentBar.mozRequestFullScreen();
+      } else if (myDocumentBar.webkitRequestFullscreen) {
+        myDocumentBar.webkitRequestFullscreen();
       }
     }
     isFullScreen = !isFullScreen;
