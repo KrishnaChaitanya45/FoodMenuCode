@@ -25,7 +25,9 @@ function goPrevPageBar() {
     pageFlipBar.flipPrev();
     currentLocationBar--;
     pageIndicatorBar.innerText = ` ${currentLocationBar} / ${numOfPapersBar}`;
+    console.log("Pressed");
   }
+  console.log("Out of If");
 }
 prevBtnBar.addEventListener("click", goPrevPage);
 nextBtnBar.addEventListener("click", goNextPage);
@@ -35,8 +37,11 @@ function goNextPageBar() {
   if (currentLocationBar < numOfPapersBar) {
     pageFlipBar.flipNext();
     currentLocationBar++;
+    console.log("Pressed Next");
+    
     pageIndicatorBar.innerText = ` ${currentLocationBar} / ${numOfPapersBar}`;
   }
+  console.log("Out of If Next");
 }
 let currentLocationBar = pageFlipBar.getCurrentPageIndex() + 1; //extract information for pageFlipBar like this
 let numOfPapersBar = pageFlipBar.getPageCount(); //same for here
