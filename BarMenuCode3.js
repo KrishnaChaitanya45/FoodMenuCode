@@ -1,4 +1,4 @@
-
+const prevBtnBar = document.querySelector("#prev-btn-bar");
 const nextBtnBar = document.querySelector("#next-btn-bar");
 const bookBar = document.querySelector("#book-bar");
 const pageIndicatorBar = document.querySelector("#page-indicator-bar");
