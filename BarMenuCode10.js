@@ -29,10 +29,6 @@ function goPrevPageBar() {
   }
   console.log("Out of If");
 }
-prevBtnBar.addEventListener("click", goPrevPage);
-nextBtnBar.addEventListener("click", goNextPage);
-nextButtonBar.addEventListener("click", goNextPage);
-prevButtonBar.addEventListener("click", goPrevPage);
 function goNextPageBar() {
   if (currentLocationBar < numOfPapersBar) {
     pageFlipBar.flipNext();
@@ -43,6 +39,10 @@ function goNextPageBar() {
   }
   console.log("Out of If Next");
 }
+prevBtnBar.addEventListener("click", goPrevPageBar);
+nextBtnBar.addEventListener("click", goNextPageBar);
+nextButtonBar.addEventListener("click", goNextPageBar);
+prevButtonBar.addEventListener("click", goPrevPageBar);
 let currentLocationBar = pageFlipBar.getCurrentPageIndex() + 1; //extract information for pageFlipBar like this
 let numOfPapersBar = pageFlipBar.getPageCount(); //same for here
 let maxLocationBar = numOfPapersBar + 1; //same for her
