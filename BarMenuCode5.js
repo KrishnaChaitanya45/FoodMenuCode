@@ -50,40 +50,30 @@ function goNextPageBar() {
 }
 let currentLocationBarBar = pageFlipBar.getCurrentPageIndex() + 1; //extract information for pageFlipBar like this
 let numOfPapersBarBar = pageFlipBar.getPageCount(); //same for here
-let maxLocation = numOfPapersBar + 1; //same for her
+let maxLocationBar = numOfPapersBar + 1; //same for her
 pageIndicatorBar.innerText = ` ${currentLocationBar} / ${numOfPapersBar}`;
-let height = 90;
-let width = 70;
-let scale = 1;
-let mobileWidth = 90;
-let mobileHeight = 30;
-let mobileScale = 1;
-let TabScale = 1;
-let TabWidth = 80;
-let TabHeight = 40;
+
 function zoomInAutomatorBar(Scale, Width, Height, widthInc, heightInc, scaleInc) {
-  book.style.scale = Scale + scaleInc;
   bookBar.style.scale = Scale + scaleInc;
   mainContainerBar.style.height = Height + heightInc + "vh";
   mainContainerBar.style.width = Width + widthInc + "vw";
 }
 function zoomOutAutomatorBar(Scale, Width, Height, widthInc, heightInc, scaleInc) {
-  book.style.scale = Scale - scaleInc;
   bookBar.style.scale = Scale - scaleInc;
   mainContainerBar.style.height = Height - heightInc + "vh";
   mainContainerBar.style.width = Width - widthInc + "vw";
 }
-const mediaQueryTabMax = window.matchMedia("(max-width:1024px)");
-const mediaQueryTabMin = window.matchMedia("(min-width:500px)");
-const mediaQuery = window.matchMedia("(max-width: 600px)");
+const mediaQueryBarTabMaxBar = window.matchMedia("(max-width:1024px)");
+const mediaQueryBarTabMinBar = window.matchMedia("(min-width:500px)");
+const mediaQueryBar = window.matchMedia("(max-width: 600px)");
 function zoomInHandlerBar() {
-  if (mediaQuery.matches) {
+  if (mediaQueryBar.matches) {
     if (mobileWidth <= 100 && mobileHeight <= 50 && mobileScale <= 1.3) {
         bookBar.style.width = "100%";
         bookBar.style.height = "100%";
       zoomInAutomatorBar(mobileScale, mobileWidth, mobileHeight, 2.5, 5, 0.001);
     }
-  } else if (mediaQueryTabMin.matches && mediaQueryTabMax.matches) {
+  } else if (mediaQueryBarTabMinBar.matches && mediaQueryBarTabMaxBar.matches) {
     if (TabWidth <= 100 && TabHeight <= 60 && TabScale <= 1.3) {
       bookBar.style.width = "100%";
       bookBar.style.height = "100%";
@@ -100,14 +90,14 @@ function zoomInHandlerBar() {
   }
 }
 function zoomOutHandlerBar() {
-  if (mediaQuery.matches) {
+  if (mediaQueryBar.matches) {
     if (mobileHeight > 30 && mobileWidth > 90 && mobileScale > 1) {
       zoomOutAutomatorBar(mobileScale, mobileWidth, mobileHeight, 2.5, 5, 0.001);
       mobileScale -= 0.001;
       mobileHeight -= 5;
       mobileWidth -= 2.5;
     }
-  } else if (mediaQueryTabMin.matches && mediaQueryTabMax.matches) {
+  } else if (mediaQueryBarTabMinBar.matches && mediaQueryBarTabMaxBar.matches) {
     if (TabHeight > 40 && TabWidth > 80 && TabScale > 1) {
       zoomOutAutomatorBar(TabScale, TabWidth, TabHeight, 5, 5, 0.005);
       TabScale -= 0.005;
@@ -125,15 +115,15 @@ function zoomOutHandlerBar() {
     }
   }
 }
-let isFullScreen = false;
+let isFullScreenBar = false;
 function FullScreenHandlerBar() {
-  if (!isFullScreen) {
-    const mediaQuery = window.matchMedia("(max-width: 600px)");
-    if (mediaQuery.matches) {
+  if (!isFullScreenBar) {
+    const mediaQueryBar = window.matchMedia("(max-width: 600px)");
+    if (mediaQueryBar.matches) {
 
       bookBar.style.height = "40vh";
       bookBar.style.width = "50vw";
-    } else if (mediaQueryTabMin.matches && mediaQueryTabMax.matches) {
+    } else if (mediaQueryBarTabMinBar.matches && mediaQueryBarTabMaxBar.matches) {
 
       bookBar.style.height = "70vh";
       bookBar.style.width = "50vw";
@@ -153,11 +143,11 @@ function FullScreenHandlerBar() {
         myDocumentBar.webkitRequestFullscreen();
       }
     }
-    isFullScreen = !isFullScreen;
+    isFullScreenBar = !isFullScreenBar;
   }
 }
 document.addEventListener("keydown", (event) => {
-  if (event.key === "e" && isFullScreen) {
+  if (event.key === "e" && isFullScreenBar) {
     document
       .exitFullscreen()
       .then(() => location.reload())
