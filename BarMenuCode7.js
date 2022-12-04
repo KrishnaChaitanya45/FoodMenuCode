@@ -9,7 +9,7 @@ const zoomInBar = document.querySelector("#zoom-in-bar");
 const zoomOutBar = document.querySelector("#zoom-out-bar");
 const fullScreenBar = document.querySelector("#full-screen-bar");
 const controllerBar = document.querySelector("#controller-bar");
-const mainContainerBarBar = document.getElementsByClassName("main-container")[1];
+const mainContainerBar = document.getElementsByClassName("main-container")[1];
 const pageFlipBar = new St.PageFlip(bookBar, {
   width: 400,
   height: 600,
