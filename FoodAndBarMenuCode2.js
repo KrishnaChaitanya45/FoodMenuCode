@@ -11,6 +11,7 @@ const paper6 = document.querySelector(`#p6`);
 const paper7 = document.querySelector(`#p7`);
 const paper8 = document.querySelector(`#p8`);
 const paper9 = document.querySelector(`#p9`);
+const pageIndicator = document.querySelector("#page-indicator");
 const paper10 = document.querySelector(`#p10`);
 const paper11 = document.querySelector(`#p11`);
 const paper12 = document.querySelector(`#p12`);
