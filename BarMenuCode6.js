@@ -48,8 +48,8 @@ function goNextPageBar() {
     pageIndicatorBar.innerText = ` ${currentLocationBar} / ${numOfPapersBar}`;
   }
 }
-let currentLocationBarBar = pageFlipBar.getCurrentPageIndex() + 1; //extract information for pageFlipBar like this
-let numOfPapersBarBar = pageFlipBar.getPageCount(); //same for here
+let currentLocationBar = pageFlipBar.getCurrentPageIndex() + 1; //extract information for pageFlipBar like this
+let numOfPapersBar = pageFlipBar.getPageCount(); //same for here
 let maxLocationBar = numOfPapersBar + 1; //same for her
 pageIndicatorBar.innerText = ` ${currentLocationBar} / ${numOfPapersBar}`;
 
